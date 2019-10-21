@@ -24,8 +24,8 @@ import android.graphics.Paint
 import android.graphics.Shader.TileMode.CLAMP
 import android.graphics.drawable.AdaptiveIconDrawable
 import android.graphics.drawable.Drawable
-import android.support.annotation.FloatRange
-import android.support.annotation.Keep
+import androidx.annotation.FloatRange
+import androidx.annotation.Keep
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -138,10 +138,11 @@ class AdaptiveIconView(
         canvas.run {
             val saveCount = save()
             translate(left, top)
-            if (shadowPaint != null) {
+            val nShadowPaint = shadowPaint
+            if (nShadowPaint != null) {
                 translate(0f, shadowDY)
                 drawRoundRect(0f, 0f, iconSize.toFloat(), iconSize.toFloat(),
-                        cornerRadius, cornerRadius, shadowPaint)
+                        cornerRadius, cornerRadius, nShadowPaint)
                 translate(0f, -shadowDY)
             }
             drawRoundRect(0f, 0f, iconSize.toFloat(), iconSize.toFloat(),
